@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+body {
+    margin: 0;
+    font-family: 'Jua', sans-serif;
+    position: fixed;
+}
+.wrap {
+    background-color: #BBFFFF;
+}
+.bg {
+    width: 100vw;
+    position: relative;
+}
+.title {
+    position: absolute;
+    top: 0;
+    left: 2%;
+}
+.start {
+    width: 60%;
+    position: absolute;
+    top: 8%;
+    right: 5%;
+    background-color: transparent;
+    border: 0;
+}
+.scoreWrap {
+    position: absolute;
+    top: 13%;
+    left: 2%;
+    font-size: 22px;
+    color: #fff;
+}
+.panel {
+    position: relative;
+    width: 394px;
+    height: 355px;
+    z-index: 2;
+    bottom: 545px;
+}
+.mole {
+    position: absolute;
+    top: 110px;
+    left: 150px;
+}
