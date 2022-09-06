@@ -1,14 +1,17 @@
 //change color of start button
-let start = document.querySelector(".startImg");
+let startBtn = document.querySelector(".startImg");
+let start = document.querySelector(".start");
 
-start.addEventListener("mouseover", changePic, false);
-start.addEventListener("mouseout", originPic, false);
+startBtn.addEventListener("mouseover", changePic, false);
+startBtn.addEventListener("mouseout", originPic, false);
+
+start.addEventListener("click", startGame);
 
 function changePic(){
-    start.src = "images/startH.png";
+    startBtn.src = "images/startH.png";
 }
 function originPic(){
-    start.src = "images/start.png";
+    startBtn.src = "images/start.png";
 }
 
 //전역변수 선언
@@ -18,13 +21,8 @@ let mole = null;
 let play = false;
 let timerID = 0;
 
-document.addEventListener("DOMContentLoaded", function(){
-    init();
-    initEvent();
-})
-
-// init();
-// initEvent();
+init();
+initEvent();
 
 
 function init(){
@@ -32,13 +30,9 @@ function init(){
     mole = document.querySelector(".mole");
 }
 
+
 //이벤트 등록
 function initEvent(){
-    //버튼 누르면 게임 시작
-    let start = document.querySelector(".start");
-    start.addEventListener("click", startGame);
-    startGame();
-
     //두더지 클릭하면 점수 증가
     let moles = document.querySelector(".mole");
     moles.addEventListener("click", addScore);
