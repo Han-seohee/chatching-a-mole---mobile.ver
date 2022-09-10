@@ -4,6 +4,7 @@ let start = document.querySelector(".start");
 let close = document.getElementById('close');
 let modal = document.querySelector('.modal');
 let dimmed = document.querySelector('.dimmed');
+let moles = document.querySelector(".mole");
 
 close.addEventListener("click", function(){
     dimmed.style.display = "none";
@@ -42,7 +43,6 @@ function init(){
 //이벤트 등록
 function initEvent(){
     //두더지 클릭하면 점수 증가
-    let moles = document.querySelector(".mole");
     moles.addEventListener("click", addScore);
     addScore();
 }
