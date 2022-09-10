@@ -56,7 +56,7 @@ function startGame(){
         timerID = setInterval(function(){
             //두더지 움직이기
             moveMole();
-        }, 500);
+        }, 700);
     }
 }
 
