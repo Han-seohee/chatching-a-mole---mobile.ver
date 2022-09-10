@@ -72,10 +72,10 @@ function addScore(){
 function moveMole(){
     //두더지 크기 101 * 96
     //패널 크기 450 * 355
-    //두더지 x이동 영역 0~293 (450-101)
-    //두더지 y이동 영역 0~259 (355-96)
-    let x = Math.floor(Math.random() * 349) + 'px';
-    let y = Math.floor(Math.random() * 259) + 'px';
+    //두더지 x이동 영역 0~293 (440-101)
+    //두더지 y이동 영역 0~259 (335-96)
+    let x = Math.floor(Math.random() * 309) + 'px';
+    let y = Math.floor(Math.random() * 239) + 'px';
 
     mole.style.left = x;
     mole.style.top = y;
