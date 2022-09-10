@@ -9,19 +9,30 @@
 </head>
 <body>
     <div class="wrap">
-        <img src="images/bg412.png" alt="배경" class="bg">
-        <img src="images/title.png" alt="title" class="title">
-        <button class="start">
-            <img src="images/start.png" alt="start" class="startImg">
-        </button>
-        <div class="scoreWrap">
-            <span id="scoreText">현재 점수 : </span>
-            <span id="score">0</span>
+        <div class="bg">
+            <!-- <img src="images/bg412.png" alt="배경" class="bg"> -->
+            <img src="images/title.png" alt="title" class="title">
+            <button class="start">
+                <img src="images/start.png" alt="start" class="startImg">
+            </button>
+            <div class="scoreWrap">
+                <span id="scoreText">현재 점수 : </span>
+                <span id="score">0</span>
+            </div>
         </div>
         <div class="panel">
             <img src="images/mole.png" alt="두더지" class="mole">
         </div>
     </div>
+
+    <div class="modal">
+        <h1>해상도 지원 안내창</h1>
+        <p>해당 두더지 잡기 게임은<br> 개인 포트폴리오 목적으로 제작되었으며,<br>
+            모바일 해상도에 최적화 되어있습니다.
+        </p>
+        <button class="close" id="close">닫기</button>
+    </div>
+    <div class="dimmed"></div>
 
     <script src="main.js"></script>
 </body>

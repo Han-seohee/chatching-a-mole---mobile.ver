@@ -1,6 +1,14 @@
 //change color of start button
 let startBtn = document.querySelector(".startImg");
 let start = document.querySelector(".start");
+let close = document.getElementById('close');
+let modal = document.querySelector('.modal');
+let dimmed = document.querySelector('.dimmed');
+
+close.addEventListener("click", function(){
+    dimmed.style.display = "none";
+    modal.style.display = "none";
+})
 
 startBtn.addEventListener("mouseover", changePic, false);
 startBtn.addEventListener("mouseout", originPic, false);
@@ -48,7 +56,7 @@ function startGame(){
         timerID = setInterval(function(){
             //두더지 움직이기
             moveMole();
-        }, 1000);
+        }, 500);
     }
 }
 
@@ -63,10 +71,10 @@ function addScore(){
 //두더지 움직이게 하는 moveMole()구현
 function moveMole(){
     //두더지 크기 101 * 96
-    //패널 크기 394 * 355
-    //두더지 x이동 영역 0~293 (394-101)
+    //패널 크기 450 * 355
+    //두더지 x이동 영역 0~293 (450-101)
     //두더지 y이동 영역 0~259 (355-96)
-    let x = Math.floor(Math.random() * 293) + 'px';
+    let x = Math.floor(Math.random() * 349) + 'px';
     let y = Math.floor(Math.random() * 259) + 'px';
 
     mole.style.left = x;
@@ -84,3 +92,4 @@ function checkEndGame(){
         score.innerHTML = 0;
     }, 10000);
 }
+
