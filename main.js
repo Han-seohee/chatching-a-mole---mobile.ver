@@ -6,90 +6,70 @@ let modal = document.querySelector('.modal');
 let dimmed = document.querySelector('.dimmed');
 let moles = document.querySelector(".mole");
 
-close.addEventListener("click", function(){
-    dimmed.style.display = "none";
-    modal.style.display = "none";
-})
-
-startBtn.addEventListener("mouseover", changePic, false);
-startBtn.addEventListener("mouseout", originPic, false);
-
-start.addEventListener("click", startGame);
-
-function changePic(){
-    startBtn.src = "images/startH.png";
-}
-function originPic(){
-    startBtn.src = "images/start.png";
-}
-
-//전역변수 선언
 let cnt = 0;
 let score = null;
 let mole = null;
 let play = false;
 let timerID = 0;
 
-init();
-initEvent();
-
-
-function init(){
-    score = document.querySelector("#score");
-    mole = document.querySelector(".mole");
+function init() {
+  score = document.querySelector("#score");
+  mole = document.querySelector(".mole");
+  close.addEventListener("click", closeModal);
+  startBtn.addEventListener("mouseover", () => changePic("images/startH.png"));
+  startBtn.addEventListener("mouseout", () => changePic("images/start.png"));
+  start.addEventListener("click", startGame);
+  moles.addEventListener("click", addScore);
 }
 
-
-//이벤트 등록
-function initEvent(){
-    //두더지 클릭하면 점수 증가
-    moles.addEventListener("click", addScore);
-    addScore();
+function closeModal() {
+  dimmed.style.display = "none";
+  modal.style.display = "none";
 }
 
-//start()구현
-function startGame(){
-    //false일 때 게임 시작
-    if(play == false){
-        checkEndGame();
-        play = true;
-        timerID = setInterval(function(){
-            //두더지 움직이기
-            moveMole();
-        }, 700);
-    }
+function changePic(src) {
+  startBtn.src = src;
 }
 
-//addScore()구현
-function addScore(){
-    if(play == true){
-        cnt++;
-        score.innerHTML = cnt;
-    }
+function startGame() {
+  if (!play) {
+    play = true;
+    cnt = 0;
+    score.innerHTML = cnt;
+    timerID = setInterval(moveMole, 700);
+    checkEndGame(10);
+  }
+}
+
+function addScore() {
+  if (play) {
+    cnt++;
+    score.innerHTML = cnt;
+  }
 }
 
 //두더지 움직이게 하는 moveMole()구현
-function moveMole(){
-    //두더지 크기 101 * 96
-    //패널 크기 450 * 355
-    //두더지 x이동 영역 0~293 (440-101)
-    //두더지 y이동 영역 0~259 (335-96)
-    let x = Math.floor(Math.random() * 309) + 'px';
-    let y = Math.floor(Math.random() * 239) + 'px';
+function moveMole() {
+  //두더지 크기 101 * 96
+  //패널 크기 450 * 355
+  //두더지 x이동 영역 0~293 (440-101)
+  //두더지 y이동 영역 0~259 (335-96)
+  let x = Math.floor(Math.random() * 309) + 'px';
+  let y = Math.floor(Math.random() * 239) + 'px';
 
-    mole.style.left = x;
-    mole.style.top = y;
+  mole.style.left = x;
+  mole.style.top = y;
 }
 
-function checkEndGame(){
-    //게임이 10초 뒤에 종료
-    setTimeout(function(){
-        play = false;
-        //두더지 움직이는 타이머 제거
-        clearInterval(timerID);
-        alert("게임종료⭐️ 두더지 " + cnt + " 마리를 잡았습니다.🐾");
-        cnt = 0;
-        score.innerHTML = 0;
-    }, 10000);
+function checkEndGame(duration) {
+  //게임이 10초 뒤에 종료
+  setTimeout(function () {
+    play = false;
+    //두더지 움직이는 타이머 제거
+    clearInterval(timerID);
+    alert("게임종료⭐️ 두더지 " + cnt + " 마리를 잡았습니다.🐾");
+  }, duration * 1000);
 }
+
+init();
 
