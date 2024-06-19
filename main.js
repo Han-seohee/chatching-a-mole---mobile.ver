@@ -10,16 +10,22 @@ let cnt = 0;
 let score = null;
 let mole = null;
 let play = false;
-let timerID = 0;
+let gameTimerID = 0;
+let countdownTimerID = 0;
+let timeRemaining = 10;
+let timerDisplay = null;
 
 function init() {
   score = document.querySelector("#score");
   mole = document.querySelector(".mole");
+  timerDisplay = document.querySelector("#timer");
+
   close.addEventListener("click", closeModal);
   startBtn.addEventListener("mouseover", () => changePic("images/startH.png"));
   startBtn.addEventListener("mouseout", () => changePic("images/start.png"));
   start.addEventListener("click", startGame);
   moles.addEventListener("click", addScore);
+  timerDisplay.style.display = 'none';
 }
 
 function closeModal() {
@@ -36,8 +42,12 @@ function startGame() {
     play = true;
     cnt = 0;
     score.innerHTML = cnt;
-    timerID = setInterval(moveMole, 700);
-    checkEndGame(10);
+    timeRemaining = 10;
+    timerDisplay.innerHTML = `남은 시간 : ${timeRemaining}초`;
+    gameTimerID = setInterval(moveMole, 700);
+    countdownTimerID = setInterval(updateTimer, 1000);
+    timerDisplay.style.display = 'block';
+    startBtn.style.display = 'none';
   }
 }
 
@@ -61,14 +71,22 @@ function moveMole() {
   mole.style.top = y;
 }
 
-function checkEndGame(duration) {
-  //게임이 10초 뒤에 종료
-  setTimeout(function () {
-    play = false;
-    //두더지 움직이는 타이머 제거
-    clearInterval(timerID);
-    alert("게임종료⭐️ 두더지 " + cnt + " 마리를 잡았습니다.🐾");
-  }, duration * 1000);
+function updateTimer() {
+  if (timeRemaining > 0) {
+    timeRemaining--;
+    timerDisplay.innerHTML = `남은 시간 : ${timeRemaining}초`;
+  } else {
+    endGame();
+  }
+}
+
+function endGame() {
+  play = false;
+  clearInterval(gameTimerID);
+  clearInterval(countdownTimerID);
+  startBtn.style.display = 'block';
+  timerDisplay.style.display = 'none';
+  alert(`게임종료⭐️ 두더지 ${cnt} 마리를 잡았습니다.🐾`);
 }
 
 init();

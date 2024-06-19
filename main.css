@@ -39,12 +39,27 @@ body {
     border: 0;
     cursor: pointer;
 }
+#timer {
+    margin: 0;
+    position: absolute;
+    top: 13%;
+    right: 10%;
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px;
+    z-index: 5;
+    font-size: 16px;
+    color: red;
+}
 .scoreWrap {
     position: absolute;
     top: 22%;
     left: 2%;
     font-size: 22px;
-    color: #fff;
+    color: #5f351a;
 }
 .panel {
     position: relative;
